@@ -101,7 +101,7 @@ if __name__ == "__main__":
 	args = parser.parse_args()
 
 	if not (args.solar_only or args.combined):
-		parser.error('No action requested, add -solar_only or -combined')
+		parser.error('No action requested, add --solar_only or --combined')
 
 	num_jobs = 175000
 	jobs = generate_jobs(0, num_jobs)
@@ -123,7 +123,7 @@ if __name__ == "__main__":
 		use_real_solar = True
 	elif args.combined:
 	# use_real_wind = False
-		use_combined_energy = False
+		use_combined_energy = True
 
 	queued_jobs = {}
 
