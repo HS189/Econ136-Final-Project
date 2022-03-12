@@ -3,6 +3,7 @@ from collections import deque
 import numpy as np
 import sys
 import matplotlib.pyplot as plt
+import argparse
 
 from auction import *
 import power_supply
@@ -93,6 +94,15 @@ def job_bid_value(job, cur_time):
 
 
 if __name__ == "__main__":
+
+	parser = argparse.ArgumentParser()
+	parser.add_argument('--solar_only', action='store_true')
+	parser.add_argument('--combined', action='store_true')
+	args = parser.parse_args()
+
+	if not (args.solar_only or args.combined):
+		parser.error('No action requested, add -solar_only or -combined')
+
 	num_jobs = 175000
 	jobs = generate_jobs(0, num_jobs)
 
@@ -107,9 +117,13 @@ if __name__ == "__main__":
 
 	checkpointing_available = True
 
-	use_real_solar = True
-	use_real_wind = False
+	use_real_solar = False
 	use_combined_energy = False
+	if args.solar_only:
+		use_real_solar = True
+	elif args.combined:
+	# use_real_wind = False
+		use_combined_energy = False
 
 	queued_jobs = {}
 
@@ -126,8 +140,8 @@ if __name__ == "__main__":
 		energy_api = power_supply.combined_renewable_power
 	elif use_real_solar:
 		energy_api = power_supply.real_solar_power
-	elif use_real_wind:
-		energy_api = power_supply.real_wind_power
+	# elif use_real_wind:
+	# 	energy_api = power_supply.real_wind_power
 
 
 	for i in range(len(jobs)):
