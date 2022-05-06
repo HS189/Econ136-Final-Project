@@ -111,7 +111,7 @@ if __name__ == "__main__":
 	cur_time = 0
 	auction_interval = 60 # run auction every 60 sec
 
-	green_reserve_price = 0.005
+	green_reserve_price = 0.01
 
 	brown_reserve_price = 0.06
 
