@@ -1,4 +1,4 @@
-# Econ136-Final-Project
+# Green Compute Cluster
 
 ## Install Dependencies
 Use your favorite dependency manager to install the required dependencies for this project, i.e:
