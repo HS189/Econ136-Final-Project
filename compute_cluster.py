@@ -148,13 +148,14 @@ if __name__ == "__main__":
 
 	if args.use_google:
 		jobs = real_google_jobs()
+		auction_interval = 60*6 # run auction every 6 min
 	else:
 		num_jobs = 175000
 		jobs = generate_jobs(0, num_jobs)
+		auction_interval = 60*1 # run auction every 60 sec
 		# np.save('jobs_file', jobs)
 	print('loaded jobs')
 	cur_time = 0
-	auction_interval = 60*1 # run auction every 60 sec
 	auction_interval_min = auction_interval / 60.
 
 	green_reserve_price = 0.01 * auction_interval_min
