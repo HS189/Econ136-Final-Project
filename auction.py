@@ -27,6 +27,7 @@ class UniformAuction:
     def solve_auction(self):
         # returns K+1st highest bid for K = num_items
         # subject to the reserve price
+        # should only be called once per initialization of this obj, at the end of the auction
         if len(self.bids) < self.num_items + 1:
             ext = [JobBid(self.reserve_price, -1)] * (self.num_items - len(self.bids) + 1)
             self.bids.extend(ext)

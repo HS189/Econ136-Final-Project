@@ -1,6 +1,7 @@
 import numpy as np
 
 real_solar_data = np.loadtxt('data/solar_fraction_raw_energy.txt')
+full_month_solar_data = np.loadtxt('data/full_month_solar_fraction_raw_energy.txt')
 real_wind_data = np.loadtxt('data/wind_fraction_raw_energy.txt')
 combined_data = np.loadtxt('data/combined_raw_energy.txt')
 
@@ -30,6 +31,12 @@ def real_solar_power(time):
 	time_min = round(time / 60.) # convert to minutes
 	return round(real_solar_data[time_min])
 
+def monthlong_solar_power(time):
+	# uses real data
+
+	time_min = round(time / 60.) # convert to minutes
+	return round(full_month_solar_data[time_min])
+
 def real_wind_power(time):
 	# uses real data
 
@@ -42,4 +49,4 @@ def combined_renewable_power(time):
 	time_min = round(time / 60.) # convert to minutes
 	return round(combined_data[time_min])
 
-
+# np.savetxt('full_month_solar_fraction_raw_energy.txt', raw[214500:214500+len(a)*3] * 1000)

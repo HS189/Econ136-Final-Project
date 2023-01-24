@@ -1,3 +1,7 @@
 __pycache__
 *.npy
 .ipynb_checkpoints/
+*.pkl
+google_cluster/task_events/
+google_cluster/job_events/
+google_cluster/all_tasks.csv
